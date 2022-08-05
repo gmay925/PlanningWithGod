@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
+
 const workoutSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   reps: {
     type: Number,
@@ -12,6 +13,10 @@ const workoutSchema = new Schema({
   },
   load: {
     type: Number,
+    required: true
+  },
+  user_id: {
+    type: String,
     required: true
   }
 }, { timestamps: true })
