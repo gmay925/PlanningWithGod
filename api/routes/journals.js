@@ -2,14 +2,14 @@
 // const { createJournal, 
 //   getJournal,
 //   getJournals, 
-//   deleteJournals, 
-//   updateJournal } = require('../controllers/workoutControllers');
-//   const requireAuth = require('../middleware/requireAuth')
+//   deleteJournal, 
+//   updateJournal } = require('../controllers/journalControllers');
+//   const protect = require('../middleware/requireAuth');
 
 //   const router = express.Router()
   
 //   // require auth for all journal routes
-//   router.use(requireAuth)
+//   router.use(protect)
   
 //   // GET all journals
 //   router.get('/', getJournals)

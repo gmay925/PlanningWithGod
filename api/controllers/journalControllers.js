@@ -1,14 +1,14 @@
-const Journal = require('../models/journalModel');
-const mongoose = require('mongoose');
+// const Journal = require('../models/journalModel');
+// const mongoose = require('mongoose');
 
-// get all journals
-const getJournals = async (req, res) => {
-  const user_id = req.user._id
+// // get all journals
+// const getJournals = async (req, res) => {
+//   const user_id = req.user._id
 
-  const journals = await Journal.find({user_id}).sort({createdAt: -1})
+//   const journals = await Journal.find({user_id}).sort({createdAt: -1})
 
-  res.status(200).json(journals)
-}
+//   res.status(200).json(journals)
+// }
 
 // // get a single journal
 // const getJournal = async (req, res) => {
