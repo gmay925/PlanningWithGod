@@ -4,8 +4,6 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Navbar from './components/NavBar/NavBar';
-import WorkoutForm from './components/WorkoutDetails/WorkoutForm';
-// import JournalForm from './components/JournalDetails/JournalForm';
 
 function App() {
   const { user } = useAuthContext()
@@ -28,8 +26,6 @@ function App() {
               path="/signup" 
               element={!user ? <Signup /> : <Navigate to="/" />} 
             />
-            <Route exact path="/workouts" element={user ? <WorkoutForm /> : <Navigate to="/" />} />
-          {/* <Route exact path="/journals" element={user ? <JournalForm /> : <Navigate to="/journals" />} /> */}
           </Routes>
         </div>
       </BrowserRouter>

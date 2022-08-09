@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { AuthContextProvider } from '../src/components/Context/AuthContext';
 import { WorkoutsContextProvider } from '../src/components/Context/WorkoutContext';
-// import { JournalContextProvider } from '../src/components/Context/JournalContext';
 
 
 
