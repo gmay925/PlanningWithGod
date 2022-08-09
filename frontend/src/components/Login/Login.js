@@ -8,11 +8,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try{
       await login(email, password)
-    }catch(err){
-      console.log(err)
-    }
   }
 
   return (
