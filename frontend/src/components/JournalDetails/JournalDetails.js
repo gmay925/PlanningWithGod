@@ -1,5 +1,5 @@
-import { useJournalsContext } from "../../Hooks/useJournalsContext";
-import { useAuthContext } from "../../Hooks/useAuthContext";
+import { useJournalsContext } from "../Hooks/useJournalsContext";
+import { useAuthContext } from "../Hooks/useAuthContext";
 
 //date-fns 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -38,4 +38,4 @@ const JournalDetails = ({ journal }) => {
   )
 }
 
-export default JournalDetails
+export default JournalDetails;
