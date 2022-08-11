@@ -21,7 +21,6 @@ const GoalForm = () => {
     }
 
     const goal = {goals, time}
-
     const response = await fetch('/api/goals', {
       method: 'POST',
       body: JSON.stringify(goal),
@@ -55,6 +54,13 @@ const GoalForm = () => {
         onChange={(e) => setGoals(e.target.value)}
         value={goals}
         className={emptyFields.includes('goal') ? 'error' : ''}
+      />
+      <label>Time:</label>
+      <input 
+        type="text"
+        onChange={(e) => setTime(e.target.value)}
+        value={time}
+        className={emptyFields.includes('time') ? 'error' : ''}
       />
       <button>Add Goal</button>
       {error && <div className="error">{error}</div>}

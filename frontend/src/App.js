@@ -5,8 +5,8 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Landing from './components/Landing/Landing';
 import Navbar from './components/NavBar/NavBar';
-import JournalForm from './components/JournalDetails/JournalForm';
-import GoalForm from './components/GoalDetails/GoalForm';
+import JournalHome from './components/WorkoutPage/JournalHome';
+import GoalPage from './components/GoalDetails/GoalPage';
 
 function App() {
   const { user } = useAuthContext()
@@ -18,8 +18,8 @@ function App() {
         <div className="pages">
           <Routes>
             <Route exact path="/" element={user ? <Landing /> : <Navigate to="/login" /> } />
-            <Route exact path="/journals" element={user ? <JournalForm /> : <Navigate to="/login" />} />
-            <Route exact path="/goals" element={user ? <GoalForm /> : <Navigate to="/login" />} />
+            <Route path="/journals" element={user ? <JournalHome /> : <Navigate to="/login" />} />
+            <Route exact path="/goals" element={user ? <GoalPage /> : <Navigate to="/login" />} />
             <Route path="/workouts" element={user ? <WorkoutPage /> : <Navigate to="/login" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />

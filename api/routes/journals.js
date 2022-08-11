@@ -8,23 +8,27 @@ const { createJournal,
 
   const router = express.Router();
   
+ router.use((req, res, next) => {
+    console.log(req.path, req.method, 'journal')
+    next()
+  });
   // require auth for all journal routes
   router.use(protect);
   
   // GET all journals
-  router.get('/api/journals', getJournals)
+  router.get('/', getJournals)
   
   //GET a single journal
-  router.get('/api/journals/:id', getJournal)
+  router.get('/:id', getJournal)
   
   // POST a new journal
-  router.post('/api/journals', createJournal)
+  router.post('/', createJournal)
   
   // DELETE a journal
-  router.delete('/api/journals/:id', deleteJournal)
+  router.delete('/', deleteJournal)
   
   // UPDATE a journal
-  router.patch('/api/journals/:id', updateJournal)
+  router.patch('/:id', updateJournal)
   
   
   module.exports = router;

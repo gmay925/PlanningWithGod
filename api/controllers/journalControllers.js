@@ -43,7 +43,7 @@ const createJournal = async (req, res) => {
   if(!visualize) {
     emptyFields.push('visualize')
   }
-  if(emptyFields.length > 0) {
+  if(emptyFields.length < 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
   }
 

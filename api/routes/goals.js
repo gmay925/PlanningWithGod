@@ -8,23 +8,27 @@ const { createGoal,
 
   const router = express.Router();
   
+  router.use((req, res, next) => {
+    console.log(req.path, req.method, 'journal')
+    next()
+  });  
   // require auth for all goal routes
   router.use(protect);
   
   // GET all goals
-  router.get('/api/goals', getGoals);
+  router.get('/', getGoals);
   
   //GET a single Goal
-  router.get('/api/goals/:id', getGoal);
+  router.get('/:id', getGoal);
   
   // POST a new goal
-  router.post('/api/goals', createGoal);
+  router.post('/', createGoal);
   
   // DELETE a goal
-  router.delete('/api/goals/:id', deleteGoal);
+  router.delete('/:id', deleteGoal);
   
   // UPDATE a goal
-  router.patch('api/goals/:id', updateGoal);
+  router.patch('/:id', updateGoal);
   
   
   module.exports = router;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useJournalsContext } from "../Hooks/useJournalsContext";
 import { useAuthContext } from '../Hooks/useAuthContext';
-import JournalDetails from '../JournalDetails/JournalDetails;'
+import JournalDetails from '../JournalDetails/JournalDetails';
 import JournalForm from "../JournalDetails/JournalForm";
 
 const JournalHome = () => {

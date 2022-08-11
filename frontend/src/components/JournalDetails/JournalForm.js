@@ -9,7 +9,7 @@ const JournalForm = () => {
 
   const [title, setTitle] = useState('')
   const [gratitude, setGratitude] = useState('')
-  const [visualization, setVisualization] = useState('')
+  const [visualize, setVisualize] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
@@ -21,7 +21,7 @@ const JournalForm = () => {
       return
     }
 
-    const journal = {title, gratitude, visualization}
+    const journal = {title, gratitude, visualize}
 
     const response = await fetch('/api/journals', {
       method: 'POST',
@@ -40,7 +40,7 @@ const JournalForm = () => {
     if (response.ok) {
       setTitle('')
       setGratitude('')
-      setVisualization('')
+      setVisualize('')
       setError(null)
       setEmptyFields([])
       dispatch({type: 'CREATE_JOURNAL', payload: json})
@@ -70,9 +70,9 @@ const JournalForm = () => {
       <label>Visualize how your future will be for 60 seconds. What did you see?</label>
       <input 
         type="text"
-        onChange={(e) => setVisualization(e.target.value)}
-        value={visualization}
-        className={emptyFields.includes('visualization') ? 'error' : ''}
+        onChange={(e) => setVisualize(e.target.value)}
+        value={visualize}
+        className={emptyFields.includes('visualize') ? 'error' : ''}
       />
 
       <button>Add Journal</button>

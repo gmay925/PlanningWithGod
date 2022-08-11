@@ -1,5 +1,5 @@
-import { useGoalsContext } from "../Hooks/useGoalsContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
+import { useGoalsContext } from "../Hooks/useGoalContext";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 
