@@ -40,7 +40,7 @@ const createGoal = async (req, res) => {
   if(!time) {
     emptyFields.push('time')
   }
-  if(emptyFields.length > 0) {
+  if(emptyFields.length < 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
   }
 

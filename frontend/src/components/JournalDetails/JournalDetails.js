@@ -1,9 +1,7 @@
 import { useJournalsContext } from "../Hooks/useJournalsContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
 
-//date-fns 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-
 
 const JournalDetails = ({ journal }) => {
   const { dispatch } = useJournalsContext()

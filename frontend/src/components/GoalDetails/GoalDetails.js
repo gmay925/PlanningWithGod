@@ -2,7 +2,6 @@ import { useAuthContext } from "../Hooks/useAuthContext";
 import { useGoalsContext } from "../Hooks/useGoalContext";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-
 const GoalDetails = ({ goal }) => {
   const { dispatch } = useGoalsContext()
   const { user } = useAuthContext()

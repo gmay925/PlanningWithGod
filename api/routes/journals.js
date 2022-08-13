@@ -25,7 +25,7 @@ const { createJournal,
   router.post('/', createJournal)
   
   // DELETE a journal
-  router.delete('/', deleteJournal)
+  router.delete('/:id', deleteJournal)
   
   // UPDATE a journal
   router.patch('/:id', updateJournal)

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useWorkoutsContext } from "../Hooks/useWorkoutsContext";
 import { useAuthContext } from '../Hooks/useAuthContext';
+import Form from 'react-bootstrap/Form';
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext()
@@ -47,15 +48,16 @@ const WorkoutForm = () => {
   }
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
+    <Form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
 
       <label>Exercise Title:</label>
       <input 
         type="text"
-        onChange={(e) => setTitle(e.target.value)}
         value={title}
+        placeholder='Exercise Title'
         className={emptyFields.includes('title') ? 'error' : ''}
+        onChange={(e) => setTitle(e.target.value)}
       />
 
       <label>Load (in lbs):</label>
@@ -76,7 +78,7 @@ const WorkoutForm = () => {
 
       <button>Add Workout</button> 
       {error && <div className="error">{error}</div>}
-    </form>
+    </Form>
   )
 }
 
