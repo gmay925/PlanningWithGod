@@ -2,7 +2,7 @@ import { useWorkoutsContext } from '../Hooks/useWorkoutsContext';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { AuthContext } from '../Context/AuthContext';
-import WorkoutPage from '../WorkoutPage/WorkoutPage';
+import WorkoutPage from './WorkoutPage';
 import { WorkoutsContext} from '../Context/WorkoutContext';
 
 

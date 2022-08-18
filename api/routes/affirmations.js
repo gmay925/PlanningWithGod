@@ -1,18 +1,18 @@
 // const express = require('express');
-// const { createWorkout, 
-//   getWorkout,
-//   getWorkouts, 
-//   deleteWorkout, 
-//   updateWorkout } = require('../controllers/workoutControllers');
-//   const protect = require('../middleware/requireAuth');
+// // const { createWorkout, 
+// //   getWorkout,
+// //   getWorkouts, 
+// //   deleteWorkout, 
+// //   updateWorkout } = require('../controllers/workoutControllers');
+// //   const protect = require('../middleware/requireAuth');
 
-//   const router = express.Router()
+// const router = express.Router();
   
-//   // require auth for all workout routes
-//   router.use(protect)
+// // require auth for all workout routes
+// router.use(protect);
   
-//   // GET all workouts
-//   router.get('/', getWorkouts)
+//   // GET all affirmations
+//   router.get('/', getAffirmations)
   
 //   //GET a single workout
 //   router.get('/:id', getWorkout)

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import { useWorkoutsContext } from '../Hooks/useWorkoutsContext';
-import WorkoutDetails from '../WorkoutDetails/WorkoutDetails';
-import WorkoutForm from '../WorkoutDetails/WorkoutForm';
+import WorkoutDetails from './WorkoutDetails';
+import WorkoutForm from './WorkoutForm';
 
 const WorkoutPage = () => {
   const { workouts, dispatch } = useWorkoutsContext();

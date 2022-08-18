@@ -3,12 +3,12 @@ import {
   BrowserRouter, Routes, Route, Navigate,
 } from 'react-router-dom';
 import { useAuthContext } from './components/Hooks/useAuthContext';
-import WorkoutPage from './components/WorkoutPage/WorkoutPage';
+import WorkoutPage from './components/WorkoutDetails/WorkoutPage';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Landing from './components/Landing/Landing';
 import Navbar from './components/NavBar/NavBar';
-import JournalHome from './components/WorkoutPage/JournalHome';
+import JournalHome from './components/JournalDetails/JournalHome';
 import GoalPage from './components/GoalDetails/GoalPage';
 
 function App() {
