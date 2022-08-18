@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { useGoalsContext } from "../Hooks/useGoalContext";
+import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react';
+import { useGoalsContext } from '../Hooks/useGoalContext';
 import { useAuthContext } from '../Hooks/useAuthContext';
-import Form from "react-bootstrap/Form";
 
 const GoalForm = () => {
-  const { dispatch } = useGoalsContext()
-  const { user } = useAuthContext()
+  const { dispatch } = useGoalsContext();
+  const { user } = useAuthContext();
 
-  const [goals, setGoals] = useState('')
-  const [time, setTime] = useState('');
-  const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
+  const [goals, setGoals] = useState('');
+  const [timeFrame, setTimeFrame] = useState('');
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,7 +20,8 @@ const GoalForm = () => {
       return
     }
 
-    const goal = {goals, time}
+    const goal = { goals, timeFrame };
+
     const response = await fetch('/api/goals', {
       method: 'POST',
       body: JSON.stringify(goal),
@@ -29,20 +30,20 @@ const GoalForm = () => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-    const json = await response.json()
+    const json = await response.json();
 
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
     }
     if (response.ok) {
-      setGoals('')
-      setTime('')
-      setError(null)
-      setEmptyFields([])
-      dispatch({type: 'CREATE_GOAL', payload: json})
+      setGoals('');
+      setTimeFrame('');
+      setError(null);
+      setEmptyFields([]);
+      dispatch({ type: 'CREATE_GOAL', payload: json })
     }
-  }
+  };
 
   return (
     <Form className="create" onSubmit={handleSubmit}>
@@ -51,21 +52,23 @@ const GoalForm = () => {
       <label>Goal:</label>
       <input 
         type="text"
-        onChange={(e) => setGoals(e.target.value)}
         value={goals}
-        className={emptyFields.includes('goal') ? 'error' : ''}
+        className={emptyFields.includes('goals') ? 'error' : ''}
+        onChange={(e) => setGoals(e.target.value)}
+        placeholder="Add a goal"
       />
       <label>Time:</label>
       <input 
         type="text"
-        onChange={(e) => setTime(e.target.value)}
-        value={time}
-        className={emptyFields.includes('time') ? 'error' : ''}
+        value={timeFrame}
+        className={emptyFields.includes('timeFrame') ? 'error' : ''}
+        onChange={(e) => setTimeFrame(e.target.value)}
+        placeholder="What time frame?"
       />
       <button>Add Goal</button>
       {error && <div className="error">{error}</div>}
     </Form>
-  )
+  );
 }
 
 export default GoalForm;

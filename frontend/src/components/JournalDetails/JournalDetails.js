@@ -28,8 +28,8 @@ const JournalDetails = ({ journal }) => {
   return (
     <div className="journal-details">
       <h4>{journal.title}</h4>
-      <p><strong>Gratitude: </strong>{journal.load}</p>
-      <p><strong>Visualize </strong>{journal.reps}</p>
+      <p><strong>Gratitude: </strong>{journal.gratitude}</p>
+      <p><strong>Visualize </strong>{journal.visualize}</p>
       <p>{formatDistanceToNow(new Date(journal.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>

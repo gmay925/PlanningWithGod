@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // get all goals
 const getGoals = async (req, res) => {
-  const user_id = req.user._id
+  const user_id = req.user.id
 
   const goals = await Goal.find({user_id}).sort({createdAt: -1})
 
@@ -30,15 +30,15 @@ const getGoal = async (req, res) => {
 
 // create new goal
 const createGoal = async (req, res) => {
-  const {goals, time} = req.body
+  const {goals, timeFrame} = req.body
 
   let emptyFields = []
 
   if(!goals) {
     emptyFields.push('goal')
   }
-  if(!time) {
-    emptyFields.push('time')
+  if(!timeFrame) {
+    emptyFields.push('timeFrame')
   }
   if(emptyFields.length < 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
@@ -46,8 +46,8 @@ const createGoal = async (req, res) => {
 
   // add doc to db
   try {
-    const user_id = req.user._id
-    const goal = await Goal.create({goals, time, user_id})
+    const user_id = req.user.id
+    const goal = await Goal.create({goals, timeFrame, user_id})
     res.status(200).json(goal)
   } catch (error) {
     res.status(400).json({error: error.message})
@@ -79,9 +79,9 @@ const updateGoal = async (req, res) => {
     return res.status(404).json({error: 'No such goal'})
   }
 
-  const goal = await Goal.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
+  const goal = await Goal.findByIdAndUpdate({_id: id}, req.body, {returnDocument:'after'});
+  console.log(req.body)
+  console.log(goal)
 
   if (!goal) {
     return res.status(400).json({error: 'No such goal'})

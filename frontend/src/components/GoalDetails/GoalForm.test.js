@@ -1,9 +1,9 @@
-import { useWorkoutsContext } from '../Hooks/useWorkoutsContext';
+import { useGoalsContext } from '../Context/GoalContext';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { AuthContext } from '../Context/AuthContext';
-import WorkoutPage from '../WorkoutPage/WorkoutPage';
-import { WorkoutsContext} from '../Context/WorkoutContext';
+import GoalPage from '../GoalDetails/GoalPage';
+import { GoalsContext } from '../Context/GoalContext';
 
 
 async function wait() {
@@ -28,36 +28,39 @@ afterAll(() => {
 });
 
 
-describe('WorkoutForm', () => {
+describe('GoalForm', () => {
   it('should be an empty form', async ()=>{
     await renderAndWait(
     <MemoryRouter initialEntries={['/']} initialIndex={0}>
        <AuthContext.Provider value={{}}>
-        <WorkoutsContext.Provider value={{}}>
+        <GoalsContext.Provider value={{}}>
       <Routes>
-        <Route path="/" element={<WorkoutPage />} />
+        <Route path="/" element={<GoalPage />} />
       </Routes>
-        </WorkoutsContext.Provider>
+        </GoalsContext.Provider>
         </AuthContext.Provider>
     </MemoryRouter>)
-    const exerciseTitleInput = screen.getByPlaceholderText('Exercise Title')
-    expect(exerciseTitleInput.value).toEqual('');
+    const goalInput = screen.getByPlaceholderText('Add a goal')
+    expect(goalInput.value).toEqual('');
 
   })
 
-  it('should add workout to workout page ', async ()=>{
+  it('should add goal to form ', async ()=>{
     await renderAndWait(
     <MemoryRouter initialEntries={['/']} initialIndex={0}>
        <AuthContext.Provider value={{}}>
-        <WorkoutsContext.Provider value={{}}>
+        <GoalsContext.Provider value={{}}>
       <Routes>
-        <Route path="/" element={<WorkoutPage />} />
+        <Route path="/" element={<GoalPage />} />
       </Routes>
-        </WorkoutsContext.Provider>
+        </GoalsContext.Provider>
         </AuthContext.Provider>
     </MemoryRouter>)
-    const exerciseTitleInput = screen.getByPlaceholderText('Exercise Title');
-    fireEvent.change(exerciseTitleInput, { target: { value: 'Weights'}});
-    expect(exerciseTitleInput.value).toEqual('Weights');
+    const goalInput = screen.getByPlaceholderText('Add a goal');
+    fireEvent.change(goalInput, { target: { value: 'Grow'}});
+
+    const timeInput = screen.getByPlaceholderText('What time frame?');
+    fireEvent.change(timeInput, { target: { value: '12 days'}});
+    
   })
 })

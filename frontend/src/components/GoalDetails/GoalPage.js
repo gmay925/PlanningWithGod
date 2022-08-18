@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useAuthContext } from "../Hooks/useAuthContext";
-import { useGoalsContext } from "../Hooks/useGoalContext";
-import GoalDetails from "./GoalDetails";
-import GoalForm from "./GoalForm";
+import { useAuthContext } from '../Hooks/useAuthContext';
+import { useGoalsContext } from '../Hooks/useGoalContext';
+import GoalDetails from './GoalDetails';
+import GoalForm from './GoalForm';
 
 const GoalPage = () => {
   const {goals, dispatch} = useGoalsContext()
@@ -28,10 +28,10 @@ const GoalPage = () => {
     <div className="home">
       <div className="goals">
         {goals && goals.map((goal) => (
-          <GoalDetails key={goal._id} goal={goal} />
-        ))}
+          <GoalDetails key={goal._id} goal={goal} /> 
+          ))}
       </div>
-      <GoalForm />
+          <GoalForm />
     </div>
   )
 }

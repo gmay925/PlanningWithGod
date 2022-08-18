@@ -11,7 +11,7 @@ const workoutSchema = new Schema({
     type: Number,
     required: true
   },
-  load: {
+  minutes: {
     type: Number,
     required: true
   },

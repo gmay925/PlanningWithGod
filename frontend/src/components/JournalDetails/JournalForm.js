@@ -4,24 +4,24 @@ import { useAuthContext } from '../Hooks/useAuthContext';
 import Form from "react-bootstrap/Form";
 
 const JournalForm = () => {
-  const { dispatch } = useJournalsContext()
-  const { user } = useAuthContext()
+  const { dispatch } = useJournalsContext();
+  const { user } = useAuthContext();
 
-  const [title, setTitle] = useState('')
-  const [gratitude, setGratitude] = useState('')
-  const [visualize, setVisualize] = useState('')
-  const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
+  const [title, setTitle] = useState('');
+  const [gratitude, setGratitude] = useState('');
+  const [visualize, setVisualize] = useState('');
+  const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!user) {
       setError('You must be logged in')
       return
     }
 
-    const journal = {title, gratitude, visualize}
+    const journal = { title, gratitude, visualize };
 
     const response = await fetch('/api/journals', {
       method: 'POST',
@@ -31,19 +31,19 @@ const JournalForm = () => {
         'Authorization': `Bearer ${user.token}`
       }
     })
-    const json = await response.json()
+    const json = await response.json();
 
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
     }
     if (response.ok) {
-      setTitle('')
-      setGratitude('')
-      setVisualize('')
-      setError(null)
-      setEmptyFields([])
-      dispatch({type: 'CREATE_JOURNAL', payload: json})
+      setTitle('');
+      setGratitude('');
+      setVisualize('');
+      setError(null);
+      setEmptyFields([]);
+      dispatch({type: 'CREATE_JOURNAL', payload: json});
     }
   }
 
@@ -54,8 +54,9 @@ const JournalForm = () => {
       <label>Journal Entry Title:</label>
       <input 
         type="text"
-        onChange={(e) => setTitle(e.target.value)}
         value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Journal Title"
         className={emptyFields.includes('title') ? 'error' : ''}
       />
 
@@ -81,4 +82,4 @@ const JournalForm = () => {
   )
 }
 
-export default JournalForm
+export default JournalForm;

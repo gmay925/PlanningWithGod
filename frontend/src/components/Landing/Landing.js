@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
 const Landing = () => (
   <div className="landing">
    <h1>When executing a vision that God has placed on your heart, it starts with a dream or idea.

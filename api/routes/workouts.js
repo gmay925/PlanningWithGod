@@ -1,9 +1,9 @@
 const express = require('express');
-const { createWorkout, 
-  getWorkout,
-  getWorkouts, 
-  deleteWorkout, 
-  updateWorkout } = require('../controllers/workoutControllers');
+ const { createWorkout, 
+   getWorkout,
+   getWorkouts, 
+   deleteWorkout, 
+   updateWorkout } = require('../controllers/workoutControllers');
   const protect = require('../middleware/requireAuth');
 
   const router = express.Router()
@@ -24,7 +24,7 @@ const { createWorkout,
   router.delete('/:id', deleteWorkout)
   
   // UPDATE a workout
-  router.patch('/:id', updateWorkout)
+  router.put('/:id', updateWorkout)
   
   
   module.exports = router

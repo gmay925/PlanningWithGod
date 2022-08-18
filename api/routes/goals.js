@@ -9,7 +9,7 @@ const { createGoal,
   const router = express.Router();
   
   router.use((req, res, next) => {
-    console.log(req.path, req.method, 'journal')
+    console.log(req.path, req.method, 'goals')
     next()
   });  
   // require auth for all goal routes
@@ -28,7 +28,7 @@ const { createGoal,
   router.delete('/:id', deleteGoal);
   
   // UPDATE a goal
-  router.patch('/:id', updateGoal);
+  router.put('/:id', updateGoal);
   
   
   module.exports = router;

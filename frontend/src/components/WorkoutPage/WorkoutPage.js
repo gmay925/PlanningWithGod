@@ -1,29 +1,28 @@
-import { useEffect } from "react";
-import { useWorkoutsContext } from "../Hooks/useWorkoutsContext";
+import { useEffect } from 'react';
 import { useAuthContext } from '../Hooks/useAuthContext';
+import { useWorkoutsContext } from '../Hooks/useWorkoutsContext';
 import WorkoutDetails from '../WorkoutDetails/WorkoutDetails';
 import WorkoutForm from '../WorkoutDetails/WorkoutForm';
 
 const WorkoutPage = () => {
-  const {workouts, dispatch} = useWorkoutsContext()
-  const {user} = useAuthContext()
+  const { workouts, dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
       const response = await fetch('/api/workouts', {
-        headers: {'Authorization': `Bearer ${user.token}`},
+        headers: { 'Authorization': `Bearer ${user.token}` },
       })
-      const json = await response.json()
+      const json = await response.json();
 
       if (response.ok) {
-        dispatch({type: 'SET_WORKOUTS', payload: json})
+        dispatch({ type: 'SET_WORKOUTS', payload: json })
       }
     }
-
-    if (user) {
-      fetchWorkouts()
+    if(user) {
+      fetchWorkouts();
     }
-  }, [dispatch, user])
+  }, [dispatch, user]);
 
   return (
     <div className="home">
@@ -34,7 +33,7 @@ const WorkoutPage = () => {
       </div>
       <WorkoutForm />
     </div>
-  )
+  );
 }
 
 export default WorkoutPage;

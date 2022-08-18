@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import {
+  BrowserRouter, Routes, Route, Navigate,
+} from 'react-router-dom';
 import { useAuthContext } from './components/Hooks/useAuthContext';
 import WorkoutPage from './components/WorkoutPage/WorkoutPage';
 import Login from './components/Login/Login';
@@ -9,7 +12,7 @@ import JournalHome from './components/WorkoutPage/JournalHome';
 import GoalPage from './components/GoalDetails/GoalPage';
 
 function App() {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
   return (
     <div className="App">
@@ -17,7 +20,7 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route exact path="/" element={user ? <Landing /> : <Navigate to="/login" /> } />
+            <Route exact path="/" element={user ? <Landing /> : <Navigate to="/login" />} />
             <Route path="/journals" element={user ? <JournalHome /> : <Navigate to="/login" />} />
             <Route exact path="/goals" element={user ? <GoalPage /> : <Navigate to="/login" />} />
             <Route path="/workouts" element={user ? <WorkoutPage /> : <Navigate to="/login" />} />

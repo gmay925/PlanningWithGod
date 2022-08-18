@@ -5,8 +5,8 @@ import JournalDetails from '../JournalDetails/JournalDetails';
 import JournalForm from "../JournalDetails/JournalForm";
 
 const JournalHome = () => {
-  const {journals, dispatch} = useJournalsContext()
-  const {user} = useAuthContext()
+  const { journals, dispatch } = useJournalsContext()
+  const { user } = useAuthContext()
 
   useEffect(() => {
     const fetchJournals = async () => {
@@ -20,7 +20,7 @@ const JournalHome = () => {
       }
     }
 
-    if (user) {
+    if(user) {
       fetchJournals()
     }
   }, [dispatch, user])

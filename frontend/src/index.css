@@ -31,6 +31,11 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
+.landing{
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+}
 
 /* WorkoutPagepage */
 .home {
@@ -158,6 +163,7 @@ form.signup, form.login {
   color: #333;
 }
 
+/* goal form */
 .goal-details {
   background: #fff;
   border-radius: 4px;
@@ -186,4 +192,9 @@ form.signup, form.login {
   border-radius: 50%;
   color: #333;
 }
+.goal-details span.goal-update {
+  right: 60px;
+}
+
+
 
