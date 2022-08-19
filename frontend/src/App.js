@@ -10,7 +10,8 @@ import Landing from './components/Landing/Landing';
 import Navbar from './components/NavBar/NavBar';
 import JournalHome from './components/JournalDetails/JournalHome';
 import GoalPage from './components/GoalDetails/GoalPage';
-import AffirmationPage from './components/AffirmationDetails/AffirmationPage'
+import AffirmationPage from './components/AffirmationDetails/AffirmationPage';
+import LogOut from './components/Logout/LogoutTwo';
 
 function App() {
   const { user } = useAuthContext();
@@ -27,6 +28,7 @@ function App() {
             <Route path="/affirmations" element={user ? <AffirmationPage /> : <Navigate to="/affirmations" />} />
             <Route path="/workouts" element={user ? <WorkoutPage /> : <Navigate to="/workouts" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/logout" element={<LogOut />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
             <Route path="*" element={<Navigate replace to='/'/>} />
           </Routes>

@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // get all journals
 const getJournals = async (req, res) => {
   const user_id = req.user._id
+  console.log(req.user)
 
   const journals = await Journal.find({user_id}).sort({createdAt: -1})
 

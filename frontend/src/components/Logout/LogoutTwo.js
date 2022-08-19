@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../Hooks/useAuthContext';
 
 export default function LogOut() {
+  const { dispatch } = useAuthContext();
   const navigate = useNavigate();
+  
   useEffect(() => {
     async function submitLogout() {
-      const res = await fetch('/logout', { method: 'POST' });
-      if (res.ok) {
-        localStorage.removeItem('loggedIn');
-      }
+       localStorage.removeItem('user');
+      dispatch({ type: 'LOGOUT' });
       navigate('/login');
     }
 
