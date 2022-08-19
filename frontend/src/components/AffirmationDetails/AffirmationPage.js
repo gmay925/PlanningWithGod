@@ -28,8 +28,8 @@ const AffirmationPage = () => {
   return (
     <div className="home">
       <div className="goals">
-        {affirmations && affirmations.map((affirm) => (
-          <AffirmationDetails key={affirm._id} affirmation={affirm} /> 
+        {affirmations && affirmations.map((affirmation) => (
+          <AffirmationDetails key={affirmation._id} affirmation={affirmation} /> 
           ))}
       </div>
           <AffirmationForm />
