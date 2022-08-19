@@ -6,12 +6,14 @@ import { AuthContextProvider } from '../src/components/Context/AuthContext';
 import { WorkoutsContextProvider } from '../src/components/Context/WorkoutContext';
 import { JournalsContextProvider } from './components/Context/JournalContext';
 import { GoalsContextProvider } from './components/Context/GoalContext';
+import { AffirmationsContextProvider } from './components/Context/AffirmationContext';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <AuthContextProvider>
+      <AffirmationsContextProvider>
       <GoalsContextProvider>
       <WorkoutsContextProvider>
         <JournalsContextProvider>
@@ -19,5 +21,6 @@ root.render(
         </JournalsContextProvider>
       </WorkoutsContextProvider>
       </GoalsContextProvider>
+      </AffirmationsContextProvider>
     </AuthContextProvider>
 );

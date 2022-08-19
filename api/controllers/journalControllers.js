@@ -82,9 +82,7 @@ const updateJournal = async (req, res) => {
     return res.status(404).json({error: 'No such journal'})
   }
 
-  const journal = await Journal.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
+  const journal = await Journal.findOneAndUpdate({_id: id}, req.body, {returnDocument:'after'});
 
   if (!journal) {
     return res.status(400).json({error: 'No such journal'})

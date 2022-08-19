@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../Hooks/useSignup";
+import Form from 'react-bootstrap/Form';
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -9,11 +10,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await signup({email, password})
+    await signup(email, password)
   }
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <Form className="signup" onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
       
       <label>Email address:</label>
@@ -31,7 +32,7 @@ const Signup = () => {
 
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
-    </form>
+    </Form>
   )
 }
 

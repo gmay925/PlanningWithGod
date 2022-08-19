@@ -9,8 +9,6 @@ export default function LogOut() {
       if (res.ok) {
         localStorage.removeItem('loggedIn');
       }
-
-      navigate('/');
       navigate('/login');
     }
 

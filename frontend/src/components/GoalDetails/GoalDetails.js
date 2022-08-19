@@ -2,7 +2,6 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useAuthContext } from '../Hooks/useAuthContext';
 import { useGoalsContext } from '../Hooks/useGoalContext';
 import React, {useEffect, useState} from 'react';
-import GoalForm from './GoalForm';
 import GoalUpdate from './GoalUpdate';
 
 const GoalDetails = ({ goal }) => {
@@ -30,26 +29,6 @@ const GoalDetails = ({ goal }) => {
     if (response.ok) {
       dispatch({type: 'DELETE_GOAL', payload: json})
     }
-  }
-  const handleUpdate = async (e) => {
-    // e.preventDefault()
-
-    // if(!user) {
-    //   return
-    // }
-
-    // const response = await fetch('/api/goals/' + goal._id, {
-    //   method:'PATCH',
-    //   headers: {
-    //     'Authorization': `Bearer ${user.token}`, 
-    //   }
-    // })
-    // const json = await response.json();
-
-    // if (response.ok) {
-    //   dispatch({type: 'UPDATE_GOAL', payload: json})
-    // }
-
   }
 
   return (

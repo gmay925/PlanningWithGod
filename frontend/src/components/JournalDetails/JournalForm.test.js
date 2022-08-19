@@ -1,7 +1,7 @@
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import {AuthContext } from '../Context/AuthContext';
-import JournalHome from '../WorkoutPage/JournalHome';
+import JournalHome from '../JournalDetails/JournalHome';
 import { JournalsContext } from '../Context/JournalContext';
 
 async function wait() {

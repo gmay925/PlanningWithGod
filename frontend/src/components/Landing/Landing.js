@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
+import Navbar from '../NavBar/NavBar';
+import Description from './Description';
+
 const Landing = () => (
-  <div className="landing">
-   <h1>When executing a vision that God has placed on your heart, it starts with a dream or idea.
-    The dream becomes a plan, the plan is then executed. The goal of this planner is to help navigate 
-    through life.
-   </h1>
+  <div className="landing-page">
+    <h1>"Write the vision and make it plain upon tablets, that he may run that readeth it."</h1>
    <Link id="user-journal" to="/journals">
     <button>Go to Journals</button>
    </Link>
@@ -18,6 +18,7 @@ const Landing = () => (
    <Link id="user-affirmations" to="/affirmations">
     <button>Go to Affirmations</button>
    </Link>
+   <Description />
   </div>
 );
 

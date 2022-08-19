@@ -1,13 +1,19 @@
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useJournalsContext } from "../Hooks/useJournalsContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
-
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import React, {useEffect, useState} from 'react';
+import JournalUpdate from './JournalUpdate';
 
 const JournalDetails = ({ journal }) => {
   const { dispatch } = useJournalsContext()
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
+  const [click, setClick] = useState(false)
 
-  const handleClick = async () => {
+  useEffect(() => {
+    setClick(false)
+  }, [journal])
+
+  const handleDelete = async () => {
     if (!user) {
       return
     }
@@ -31,7 +37,12 @@ const JournalDetails = ({ journal }) => {
       <p><strong>Gratitude: </strong>{journal.gratitude}</p>
       <p><strong>Visualize </strong>{journal.visualize}</p>
       <p>{formatDistanceToNow(new Date(journal.createdAt), { addSuffix: true })}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+      {click && <JournalUpdate journal={journal} />}
+      <span className='journal-update'>
+        <div className="material-symbols-outlined test" onClick={()=> setClick(true)}>edit</div></span>
+        <span className='journal-delete'>
+        <div className="material-symbols-outlined test1" onClick={handleDelete}>delete</div>
+      </span>
     </div>
   )
 }

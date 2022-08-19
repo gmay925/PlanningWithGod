@@ -12,7 +12,14 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('');
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+  const [hasTypedTitle, setHasTypedTitle] = useState(false);
+  const [hasTypedMinutes, setHasTypedMinutes] = useState(false);
+  const [hasTypedReps, setHasTypedReps] = useState(false);
 
+  const isValidTitle = Boolean(title);
+  const isValidMinutes = Boolean(minutes);
+  const isValidReps = Boolean(reps);
+  const allValid = isValidTitle && isValidMinutes
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,31 +58,40 @@ const WorkoutForm = () => {
     <Form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
 
-      <label>Exercise Title:</label>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+      <Form.Label>Exercise Title:</Form.Label>
+      <Form.Control
+        required
+        isInvalid={hasTypedTitle && !isValidTitle}
         placeholder="Exercise Title"
         className={emptyFields.includes('title') ? 'error' : ''}
+        onChange={(e) => { setTitle(e.target.value)
+        setHasTypedTitle(true)
+      }}
       />
 
-      <label>Minutes:</label>
-      <input
-        type="number"
-        value={minutes}
-        placeholder="How long?"
-        className={emptyFields.includes('minutes') ? 'error' : ''}
-        onChange={(e) => setMinutes(e.target.value)}
+      <Form.Label>Minutes:</Form.Label>
+      <Form.Control
+      required
+      isInvalid={hasTypedMinutes && !isValidMinutes}
+      type="number"
+      placeholder="How long?"
+      className={emptyFields.includes('minutes') ? 'error' : ''}
+      onChange={(e) => { setMinutes(e.target.value)
+      setHasTypedMinutes(true)
+    }}
       />
 
-      <label>Reps:</label>
-      <input
-        type="number"
-        onChange={(e) => setReps(e.target.value)}
-        value={reps}
-        className={emptyFields.includes('reps') ? 'error' : ''}
-      />
+      <Form.Label>Reps:</Form.Label>
+      <Form.Control
+      required
+      isInvalid={hasTypedReps && !isValidReps}
+      type="number"
+      placeholder="How many?"
+      className={emptyFields.includes('minutes') ? 'error' : ''}
+      onChange={(e) => { setReps(e.target.value)
+      setHasTypedReps(true)
+    }}
+     />
 
       <button>Add Workout</button>
       {error && <div className="error">{error}</div>}

@@ -1,9 +1,9 @@
-import { useWorkoutsContext } from '../Hooks/useWorkoutsContext';
+import { useAffirmationsContext } from '../Hooks/useAffirmationContext';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { AuthContext } from '../Context/AuthContext';
-import WorkoutPage from './WorkoutPage';
-import { WorkoutsContext} from '../Context/WorkoutContext';
+import AffirmationPage from './AffirmationPage';
+import { AffirmationsContext} from '../Context/AffirmationContext';
 
 
 async function wait() {
@@ -28,36 +28,36 @@ afterAll(() => {
 });
 
 
-describe('WorkoutDetails', () => {
-  it('should be an empty form', async ()=>{
+describe('AffirmationForm', () => {
+  it('should be an empty input field', async ()=>{
     await renderAndWait(
     <MemoryRouter initialEntries={['/']} initialIndex={0}>
        <AuthContext.Provider value={{}}>
-        <WorkoutsContext.Provider value={{}}>
+        <AffirmationsContext.Provider value={{}}>
       <Routes>
-        <Route path="/" element={<WorkoutPage />} />
+        <Route path="/" element={<AffirmationPage />} />
       </Routes>
-        </WorkoutsContext.Provider>
+        </AffirmationsContext.Provider>
         </AuthContext.Provider>
     </MemoryRouter>)
-    const exerciseTitleInput = screen.getByPlaceholderText('Exercise Title')
-    expect(exerciseTitleInput.value).toEqual('');
+    const affirmationInput = screen.getByPlaceholderText('I am')
+    expect(affirmationInput.value).toEqual('');
 
   })
 
-  it('should add workout to workout page ', async ()=>{
+  it('should add affirmation to affirmation form', async ()=>{
     await renderAndWait(
     <MemoryRouter initialEntries={['/']} initialIndex={0}>
        <AuthContext.Provider value={{}}>
-        <WorkoutsContext.Provider value={{}}>
+        <AffirmationsContext.Provider value={{}}>
       <Routes>
-        <Route path="/" element={<WorkoutPage />} />
+        <Route path="/" element={<AffirmationPage />} />
       </Routes>
-        </WorkoutsContext.Provider>
+        </AffirmationsContext.Provider>
         </AuthContext.Provider>
     </MemoryRouter>)
-    const exerciseTitleInput = screen.getByPlaceholderText('Exercise Title');
-    fireEvent.change(exerciseTitleInput, { target: { value: 'Weights'}});
-    expect(exerciseTitleInput.value).toEqual('Weights');
+    const affirmationInput = screen.getByPlaceholderText('I am');
+    fireEvent.change(affirmationInput, { target: { value: 'Strong'}});
+    expect(affirmationInput.value).toEqual('Strong');
   })
 })

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useLogin } from "../Hooks/useLogin";
+import { useState } from 'react';
+import { useLogin } from '../Hooks/useLogin';
+import Form from 'react-bootstrap/Form';
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -13,7 +14,7 @@ const Login = () => {
   }
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
+    <Form className="login" onSubmit={handleSubmit}>
       <h3>Log In</h3>
       
       <label>Email address:</label>
@@ -31,7 +32,7 @@ const Login = () => {
 
       <button disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
-    </form>
+    </Form>
   )
 }
 

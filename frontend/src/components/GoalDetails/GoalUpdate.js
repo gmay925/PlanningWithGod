@@ -47,9 +47,8 @@ const GoalUpdate = ({ goal }) => {
       />
       <label>Time Frame:</label>
       <input 
-        type="string"
+        type="text"
         value={timeFrame}
-        // className={emptyFields.includes('timeFrame') ? 'error' : ''}
         onChange={(e) => setTimeFrame(e.target.value)}
       />
 <div className="material-symbols-outlined test1" onClick={handleEdit}>edit</div>

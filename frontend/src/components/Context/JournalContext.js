@@ -15,7 +15,17 @@ export const journalsReducer = (state, action) => {
     case 'DELETE_JOURNAL':
       return { 
         journals: state.journals.filter(w => w._id !== action.payload._id) 
-      }
+      };
+      case 'UPDATE_JOURNAL':
+      return {
+        journals: state.journals.map(
+          (w) => {
+            if(w._id == action.payload._id){
+              return action.payload
+            }
+            return w
+          }),
+      };
     default:
       return state
   }

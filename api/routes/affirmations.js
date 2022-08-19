@@ -1,30 +1,34 @@
-// const express = require('express');
-// // const { createWorkout, 
-// //   getWorkout,
-// //   getWorkouts, 
-// //   deleteWorkout, 
-// //   updateWorkout } = require('../controllers/workoutControllers');
-// //   const protect = require('../middleware/requireAuth');
+const express = require('express');
+const { createAffirmation, 
+  getAffirmation,
+  getAffirmations, 
+  deleteAffirmation, 
+ updateAffirmation } = require('../controllers/affirmationController');
+const protect = require('../middleware/requireAuth');
 
-// const router = express.Router();
+const router = express.Router();
   
-// // require auth for all workout routes
-// router.use(protect);
+router.use((req, res, next) => {
+  console.log(req.path, req.method, 'affirmations')
+  next()
+});  
+
+// require auth for all workout routes
+router.use(protect);
+  // GET all affirmations
+  router.get('/', getAffirmations)
   
-//   // GET all affirmations
-//   router.get('/', getAffirmations)
+  //GET a single affirmation
+  router.get('/:id', getAffirmation)
   
-//   //GET a single workout
-//   router.get('/:id', getWorkout)
+  // POST a new affirmation
+  router.post('/', createAffirmation)
   
-//   // POST a new workout
-//   router.post('/', createWorkout)
+  // DELETE a affirmation
+  router.delete('/:id', deleteAffirmation)
   
-//   // DELETE a workout
-//   router.delete('/:id', deleteWorkout)
-  
-//   // UPDATE a workout
-//   router.put('/:id', updateWorkout)
+  // UPDATE affirmation
+  router.put('/:id', updateAffirmation)
   
   
-//   module.exports = router
+  module.exports = router

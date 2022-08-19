@@ -28,7 +28,7 @@ const { createJournal,
   router.delete('/:id', deleteJournal)
   
   // UPDATE a journal
-  router.patch('/:id', updateJournal)
+  router.put('/:id', updateJournal)
   
   
   module.exports = router;
